@@ -72,6 +72,7 @@ data_FFER_Enhanced <- data_FFER %>%
 data_FFER_Enhanced[order(data_FFER_Enhanced$FFER_Year),] %>%
   dplyr::mutate(ExpirationDate = factor(ExpirationDate, levels=unique(ExpirationDate))) %>%
   ggplot() +
+  theme_tq() +
   geom_line(aes(x = ExpirationDate, y = (100 - Last)/100, group = 1)) +
   labs(title    = "Fed Funds Rate",
        subtitle = "Expected by the Fed Funds Futures",
@@ -79,7 +80,8 @@ data_FFER_Enhanced[order(data_FFER_Enhanced$FFER_Year),] %>%
        x = "Expiration Month",
        y = "FFR Mid Target") +
   scale_y_continuous(labels = scales::percent, limits = c(0, max(100 - data_FFER_Enhanced$Last)/100*1.2)) +
-  theme(legend.position = "none")
+  theme(legend.position = "none") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))
 
 # Showing the date of the next meeting
 db_FOMC %>%
