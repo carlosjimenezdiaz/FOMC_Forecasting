@@ -90,7 +90,7 @@ db_FOMC %>%
   dplyr::select(next_meetings) %>%
   pull()
 
-meeting_to_analyze <- "2022-06-15" # enter this value manually
+meeting_to_analyze <- "2025-05-07" # enter this value manually
 
 # Odds Calculation
 data_FFER_Enhanced_Odds_Calculations <- data_FFER_Enhanced %>%
